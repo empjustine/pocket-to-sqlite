@@ -33,7 +33,7 @@ def save_items(items, db):
                 items_authors_to_save,
                 pk=("author_id", "item_id"),
                 foreign_keys=("author_id", "item_id"),
-                replace=True
+                replace=True,
             )
 
 
@@ -81,7 +81,9 @@ def fetch_stats(auth):
 
 
 class FetchItems:
-    def __init__(self, auth, since=None, page_size=500, sleep=2, retry_sleep=3, record_since=None):
+    def __init__(
+        self, auth, since=None, page_size=500, sleep=2, retry_sleep=3, record_since=None
+    ):
         self.auth = auth
         self.since = since
         self.page_size = page_size

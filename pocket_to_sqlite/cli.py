@@ -83,10 +83,13 @@ def fetch(db_path, auth, all, silent):
     last_since = None
     if not all and db["since"].exists():
         last_since = db["since"].get(1)["since"]
-    fetch = utils.FetchItems(auth, since=last_since, record_since=lambda since: db["since"].insert({
-        "id": 1,
-        "since": since
-    }, replace=True, pk="id"))
+    fetch = utils.FetchItems(
+        auth,
+        since=last_since,
+        record_since=lambda since: db["since"].insert(
+            {"id": 1, "since": since}, replace=True, pk="id"
+        ),
+    )
     if (all or last_since is None) and not silent:
         total_items = utils.fetch_stats(auth)["count_list"]
         with click.progressbar(fetch, length=total_items) as bar:
