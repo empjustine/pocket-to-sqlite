@@ -1,6 +1,7 @@
 import click
 import json
 import urllib.parse
+import pathlib
 import requests
 import sqlite_utils
 from . import utils
@@ -47,17 +48,21 @@ def auth(auth):
     codes = dict(urllib.parse.parse_qsl(response2.text))
 
     codes["consumer_key"] = CONSUMER_KEY
-    open(auth, "w").write(
-        json.dumps(
-            {
-                "pocket_consumer_key": CONSUMER_KEY,
-                "pocket_username": codes["username"],
-                "pocket_access_token": codes["access_token"],
-            },
-            indent=4,
-        )
-        + "\n"
+
+    auth_data = {}
+    auth_path = pathlib.Path(auth)
+    if auth_path.exists():
+        auth_data = json.loads(auth_path.read_text())
+
+    auth_data.update(
+        {
+            "pocket_consumer_key": CONSUMER_KEY,
+            "pocket_username": codes["username"],
+            "pocket_access_token": codes["access_token"],
+        }
     )
+
+    open(auth, "w").write(json.dumps(auth_data, indent=4) + "\n")
     click.echo("Authentication tokens written to {}".format(auth))
 
 
