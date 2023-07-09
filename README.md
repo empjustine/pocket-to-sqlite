@@ -8,24 +8,30 @@
 Create a SQLite database containing data from your [Pocket](https://getpocket.com/) account.
 
 ## How to install
-
-    $ pip install pocket-to-sqlite
-
+```bash
+pip install pocket-to-sqlite
+```
 ## Usage
 
 You will need to first obtain a valid OAuth token for your Pocket account. You can do this by running the `auth` command and following the prompts:
+```bash
+pocket-to-sqlite auth
+```
+Which looks like this:
+```
+Visit this page and sign in with your Pocket account:
 
-    $ pocket-to-sqlite auth
-    Visit this page and sign in with your Pocket account:
+https://getpocket.com/auth/author...
 
-    https://getpocket.com/auth/author...
-
-    Once you have signed in there, hit <enter> to continue
-    Authentication tokens written to auth.json
+Once you have signed in there, hit <enter> to continue
+Authentication tokens written to auth.json
+```
 
 Now you can fetch all of your items from Pocket like this:
 
-    $ pocket-to-sqlite fetch pocket.db
+```bash
+pocket-to-sqlite fetch pocket.db
+```
 
 The first time you run this command it will fetch all of your items, and display a progress bar while it does it.
 
