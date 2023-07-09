@@ -97,7 +97,7 @@ def fetch(db_path, auth, all, silent):
     )
     if (all or last_since is None) and not silent:
         total_items = utils.fetch_stats(auth)["count_list"]
-        with click.progressbar(fetch, length=total_items) as bar:
+        with click.progressbar(fetch, length=total_items, show_pos=True) as bar:
             utils.save_items(bar, db)
     else:
         # No progress bar
