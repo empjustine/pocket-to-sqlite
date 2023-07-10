@@ -17,7 +17,7 @@ requires-python = ">3.7"
 scripts = {pocket-to-sqlite = "pocket_to_sqlite.cli:cli"}
 
 [project.urls]
-homepage = "https://github.com/dogsheep/pocket-to-sqlite"
+Homepage = "https://github.com/dogsheep/pocket-to-sqlite"
 Changelog = "https://github.com/dogsheep/pocket-to-sqlite/releases"
 Issues = "https://github.com/dogsheep/pocket-to-sqlite/issues"
 CI = "https://github.com/dogsheep/pocket-to-sqlite/actions"
