@@ -1,8 +1,5 @@
-import datetime
 import requests
-import json
 import time
-from sqlite_utils.db import AlterError, ForeignKey
 
 
 def save_items(items, db):

@@ -2,7 +2,6 @@ from pocket_to_sqlite import utils
 import pytest
 import json
 import sqlite_utils
-from sqlite_utils.db import ForeignKey
 import pathlib
 
 
